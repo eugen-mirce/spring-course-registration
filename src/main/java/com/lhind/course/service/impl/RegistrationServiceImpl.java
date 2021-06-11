@@ -1,5 +1,6 @@
 package com.lhind.course.service.impl;
 
+import com.lhind.course.exceptions.RegistrationServiceException;
 import com.lhind.course.model.Course;
 import com.lhind.course.model.Registration;
 import com.lhind.course.repository.CourseRepository;
@@ -23,6 +24,9 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Override
     public Registration createRegistration(Registration registration) {
+        if(registrationRepository.findByName(registration.getName()) != null)
+            throw new RegistrationServiceException("Registration with this name exists.");
+
         List<Course> courses = registration.getCourses();
         for(Course course : courses) {
             course.setRegistration(registration);
@@ -33,7 +37,6 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Override
     public Registration updateRegistration(Registration registration) {
         Registration r = findById(registration.getId());
-        //TODO Add exception if doesn't exist
         if(r == null) return createRegistration(registration);
 
         r.setName(registration.getName());
@@ -44,25 +47,27 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Override
     public void deleteRegistration(int id) {
-        //TODO Add exception if doesn't exist
         registrationRepository.delete(findById(id));
     }
 
     @Override
     public Registration findById(int id) {
-        //TODO Add exception if doesn't exist
-        return registrationRepository.findById(id);
+        Registration registration = registrationRepository.findById(id);
+        if(registration == null) throw new RegistrationServiceException("Registration for this id doesn't exist.");
+        return registration;
     }
 
     @Override
     public List<Registration> findAll() {
-        return registrationRepository.findAll();
+        List<Registration> registrations = registrationRepository.findAll();
+        return (registrations != null) ? registrations : new ArrayList<>();
     }
 
     @Override
     public Registration addCourse(int registrationId, Course course) {
         Registration registration = findById(registrationId);
-        //TODO Add exception if doesn't exist
+        if(registration == null) throw new RegistrationServiceException("Registration for this id doesn't exist.");
+
         course.setRegistration(registration);
 
         List<Course> courses = (registration.getCourses() != null) ? registration.getCourses() : new ArrayList<>();
@@ -75,9 +80,8 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Override
     public List<Course> getCourses(int registrationId) {
         Registration registration = registrationRepository.findById(registrationId);
-        //TODO Add exception if doesn't exist
-        if(registration != null)
-            return courseRepository.findByRegistration(registration);
-        return new ArrayList<>();
+        if(registration == null) throw new RegistrationServiceException("Registration for this id doesn't exist.");
+        List<Course> returnValue = courseRepository.findAllByRegistration(registration);
+        return (returnValue != null) ? returnValue : new ArrayList<>();
     }
 }
