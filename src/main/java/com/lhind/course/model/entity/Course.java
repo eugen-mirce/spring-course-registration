@@ -1,4 +1,4 @@
-package com.lhind.course.model;
+package com.lhind.course.model.entity;
 
 import javax.persistence.*;
 
@@ -15,7 +15,8 @@ public class Course {
     @Column(name = "description")
     private String description;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
+    @JoinColumn(name = "registration_id")
     private Registration registration;
 
     public int getId() {

@@ -1,8 +1,8 @@
 package com.lhind.course.service.impl;
 
-import com.lhind.course.exceptions.RegistrationServiceException;
-import com.lhind.course.model.Course;
-import com.lhind.course.model.Registration;
+import com.lhind.course.exception.RegistrationServiceException;
+import com.lhind.course.model.entity.Course;
+import com.lhind.course.model.entity.Registration;
 import com.lhind.course.repository.CourseRepository;
 import com.lhind.course.repository.RegistrationRepository;
 import com.lhind.course.service.RegistrationService;
@@ -28,6 +28,7 @@ public class RegistrationServiceImpl implements RegistrationService {
             throw new RegistrationServiceException("Registration with this name exists.");
 
         List<Course> courses = registration.getCourses();
+        if(courses == null) courses = new ArrayList<>();
         for(Course course : courses) {
             course.setRegistration(registration);
         }

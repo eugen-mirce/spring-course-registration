@@ -1,4 +1,4 @@
-package com.lhind.course.model;
+package com.lhind.course.model.entity;
 
 import javax.persistence.*;
 

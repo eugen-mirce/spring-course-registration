@@ -1,10 +1,9 @@
 package com.lhind.course.service.impl;
 
-import com.lhind.course.exceptions.UserServiceException;
-import com.lhind.course.model.User;
+import com.lhind.course.exception.UserServiceException;
+import com.lhind.course.model.entity.User;
 import com.lhind.course.repository.UserRepository;
 import com.lhind.course.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

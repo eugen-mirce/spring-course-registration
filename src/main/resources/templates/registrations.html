@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrations</title>
+    <style>
+        span {
+            display: block;
+        }
+        .list {
+            list-style-type: disclosure-open;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: stretch;
+        }
+        li.item {
+            margin: 25px;
+        }
+    </style>
+</head>
+<body>
+<ul class="list">
+    <li class="item" th:each="registration : ${registrations}">
+        <span th:text="'Registration ID: '+${registration.id}"></span>
+        <span th:text="'Registration Name: '+${registration.name}"></span>
+        <span th:text="'Registration Courses: '"></span>
+        <ul th:each="course : ${registration.courses}">
+            <li th:text="'ID: '+${course.id}"></li>
+            <li th:text="'Name: '+${course.name}"></li>
+            <li th:text="'Description: '+${course.description}"></li>
+            <br>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

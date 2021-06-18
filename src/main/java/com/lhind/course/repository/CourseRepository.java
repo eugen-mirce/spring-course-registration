@@ -1,7 +1,7 @@
 package com.lhind.course.repository;
 
-import com.lhind.course.model.Course;
-import com.lhind.course.model.Registration;
+import com.lhind.course.model.entity.Course;
+import com.lhind.course.model.entity.Registration;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

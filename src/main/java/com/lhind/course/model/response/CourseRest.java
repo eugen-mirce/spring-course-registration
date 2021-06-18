@@ -1,10 +1,4 @@
-package com.lhind.course.response;
-
-import com.lhind.course.model.Registration;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.ManyToOne;
+package com.lhind.course.model.response;
 
 public class CourseRest {
     private int id;

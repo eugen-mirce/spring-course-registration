@@ -1,4 +1,4 @@
-package com.lhind.course.response;
+package com.lhind.course.model.response;
 
 import java.util.List;
 

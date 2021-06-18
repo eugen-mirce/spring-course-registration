@@ -1,8 +1,8 @@
 package com.lhind.course.service.impl;
 
-import com.lhind.course.exceptions.CourseServiceException;
-import com.lhind.course.model.Course;
-import com.lhind.course.model.Registration;
+import com.lhind.course.exception.CourseServiceException;
+import com.lhind.course.model.entity.Course;
+import com.lhind.course.model.entity.Registration;
 import com.lhind.course.repository.CourseRepository;
 import com.lhind.course.service.CourseService;
 import com.lhind.course.service.RegistrationService;
@@ -24,7 +24,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public Course createCourse(Course course) {
-        if(courseRepository.findByName(course.getName()) == null)
+        if(courseRepository.findByName(course.getName()) != null)
             throw new CourseServiceException("Course with this name exists.");
         Registration registration = course.getRegistration();
         if(registration != null)

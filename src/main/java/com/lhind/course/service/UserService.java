@@ -1,6 +1,6 @@
 package com.lhind.course.service;
 
-import com.lhind.course.model.User;
+import com.lhind.course.model.entity.User;
 
 import java.util.List;
 

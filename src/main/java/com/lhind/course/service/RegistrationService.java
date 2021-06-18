@@ -1,7 +1,7 @@
 package com.lhind.course.service;
 
-import com.lhind.course.model.Course;
-import com.lhind.course.model.Registration;
+import com.lhind.course.model.entity.Course;
+import com.lhind.course.model.entity.Registration;
 
 import java.util.List;
 

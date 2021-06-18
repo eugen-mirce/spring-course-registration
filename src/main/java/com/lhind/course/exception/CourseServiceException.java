@@ -1,4 +1,4 @@
-package com.lhind.course.exceptions;
+package com.lhind.course.exception;
 
 public class CourseServiceException extends RuntimeException {
     public CourseServiceException(String message) {

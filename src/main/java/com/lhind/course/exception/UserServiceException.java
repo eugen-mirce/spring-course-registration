@@ -1,4 +1,4 @@
-package com.lhind.course.exceptions;
+package com.lhind.course.exception;
 
 public class UserServiceException extends RuntimeException {
     public UserServiceException(String message) {

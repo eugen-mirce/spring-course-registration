@@ -1,4 +1,4 @@
-package com.lhind.course.model;
+package com.lhind.course.model.entity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,7 +13,7 @@ public class Registration {
     @Column(name = "name", length = 25, nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "registration", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "registration", cascade = CascadeType.ALL)
     private List<Course> courses;
 
     public int getId() {

@@ -1,6 +1,6 @@
 package com.lhind.course.repository;
 
-import com.lhind.course.model.Registration;
+import com.lhind.course.model.entity.Registration;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

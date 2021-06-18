@@ -1,10 +1,6 @@
 package com.lhind.course;
 
-import com.lhind.course.model.Course;
-import com.lhind.course.model.Registration;
-import com.lhind.course.model.User;
-import com.lhind.course.service.CourseService;
-import com.lhind.course.service.RegistrationService;
+import com.lhind.course.model.entity.User;
 import com.lhind.course.service.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,16 +8,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class CourseApplication {
 
-//	private static UserService userService;
+	private static UserService userService;
 //	private static CourseService courseService;
 //	private static RegistrationService registrationService;
-//
-//	public CourseApplication(UserService uService, CourseService cService, RegistrationService rService) {
-//		userService = uService;
-//		courseService = cService;
-//		registrationService = rService;
-//	}
 
+	public CourseApplication(UserService uService) {
+		userService = uService;
+	}
 	public static void main(String[] args) {
 		SpringApplication.run(CourseApplication.class, args);
 
